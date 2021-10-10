@@ -24,6 +24,10 @@ const urlSchema = new Schema({
         trim: true,
         required: true
     },
+    creatorIP: {
+        type: String,
+        default: 'Anonymous'
+    }
 }, {
     toObject: {
         virtuals: true
