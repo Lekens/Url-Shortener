@@ -179,7 +179,7 @@
           "type": "string",
           "default": "FAILURE"
         },
-        "message": {
+        "msg": {
           "type": "string"
         }
       }
