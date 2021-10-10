@@ -131,7 +131,7 @@
       }
 
     },
-    "/satistic/{url}": {
+    "/statistic/{url}": {
       "get": {
         "tags": [
           "ManageURL"
