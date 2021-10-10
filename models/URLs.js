@@ -1,9 +1,7 @@
-import * as mongoose from "mongoose";
-import * as uniqueValidator from 'mongoose-unique-validator';
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
 
 // create a url schema
-const urlSchema = new Schema({
+const urlSchema = new mongoose.Schema({
     longUrl: {
         type: String,
         unique: true,
@@ -29,16 +27,7 @@ const urlSchema = new Schema({
         default: 'Anonymous'
     }
 }, {
-    toObject: {
-        virtuals: true
-    },
-    toJSON: {
-        virtuals: true
-    }
-}, {
     timestamps: true
 });
-
-urlSchema.plugin(uniqueValidator);
 
 export const URLs = mongoose.model('URL', urlSchema);

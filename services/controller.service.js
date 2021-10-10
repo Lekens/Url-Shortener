@@ -1,4 +1,5 @@
-import {responseHandler} from "./response.service.js";
+import { responseHandler } from "./response.service.js";
+import { Statistics } from "../models/Statistics.js";
 export const controllerService = {
     checkAPIKey: (req, res, next) => {
         try {
@@ -27,5 +28,14 @@ export const controllerService = {
                 'Unable to check request header!',
             );
         }
+    },
+    saveStatistic: (req, code, urlId) => {
+        Statistics.create({
+            urlCode: code,
+            urlId,
+            visitorIP: req.socket.remoteAddress,
+        }, (err) => {
+            return true;
+        });
     }
 };

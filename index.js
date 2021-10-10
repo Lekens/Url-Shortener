@@ -11,7 +11,6 @@ import URLRouter from './routes/URLRouter.js';
 
 const swaggerDocument = JSON.parse(await readFile(new URL('./swagger.json', import.meta.url)));
 
-// {request.connection.remoteAddress}
 const dotenv = dot.config();
 
 // Start Express Application

@@ -10,7 +10,7 @@ export const responseHandler = {
         error ? err.ERROR = error : null;
         return res.status(code).send(errorResponse);
         },
-    sendSuccess: (res, code, message, data, encode= true) => {
+    sendSuccess: (res, code, message, data) => {
         successResponse.data = data;
         successResponse.msg = message;
         if(code){

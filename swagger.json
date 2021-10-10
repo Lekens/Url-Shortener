@@ -3,13 +3,13 @@
   "info": {
     "version": "1.0.0",
     "title": "URL-SHORTENER",
-    "description": "Documentation for URL-SHORTENER service",
+    "description": "Documentation for URL-SHORTENER service: API-KEY = 90976cc4f16bfbb6dd0d417c4ef7530",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
     }
   },
-  "host": "heroku-link",
+  "host": "localhost:8090",
   "basePath": "/api",
   "tags": [
     {
@@ -18,7 +18,7 @@
     }
   ],
   "schemes": [
-    "https"
+    "http"
   ],
   "consumes": [
     "application/json"
@@ -34,7 +34,7 @@
         ],
         "parameters": [
           {
-            "name": "api_key",
+            "name": "authorization",
             "in": "header",
             "description": "API_KEY",
             "required": true,
@@ -64,7 +64,7 @@
         ],
         "parameters": [
           {
-            "name": "api_key",
+            "name": "authorization",
             "in": "header",
             "description": "API_KEY",
             "required": true,
@@ -76,7 +76,7 @@
             "required": true,
             "description": "Object of long url",
             "schema": {
-              "$ref": "#/definitions/dataToDecodeOrEncode"
+              "$ref": "#/definitions/dataToEncode"
             }
           }
         ],
@@ -99,7 +99,7 @@
         ],
         "parameters": [
           {
-            "name": "api_key",
+            "name": "authorization",
             "in": "header",
             "description": "API_KEY",
             "required": true,
@@ -111,7 +111,7 @@
             "required": true,
             "description": "Object of short url",
             "schema": {
-              "$ref": "#/definitions/dataToDecodeOrEncode"
+              "$ref": "#/definitions/dataToDecode"
             }
           }
         ],
@@ -131,7 +131,7 @@
       }
 
     },
-    "/statistic/{url}": {
+    "/statistic/{url_path}": {
       "get": {
         "tags": [
           "ManageURL"
@@ -139,19 +139,18 @@
         "summary": "Show the statistic of a given url",
         "description": "Register new user",
         "parameters": [
-          {
-            "name": "user",
-            "in": "body",
-            "required": true,
-            "description": "Registration data",
-            "schema": {
-              "$ref": "#/definitions/User"
-            }
-          }, {
+           {
             "name": "url",
             "in": "path",
             "required": true,
             "description": "Url code to show statistic",
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "description": "API_KEY",
+            "required": true,
             "type": "string"
           }
         ],
@@ -186,17 +185,21 @@
       }
     },
 
-    "dataToDecodeOrEncode": {
+    "dataToDecode": {
       "properties": {
-        "url": {
+        "shortUrl": {
           "type": "string"
         }
       },
-      "required": ["url"]
+      "required": ["shortUrl"]
     },
-    "Users": {
-      "type": "array",
-      "$ref": "#/definitions/User"
+    "dataToEncode": {
+      "properties": {
+        "longUrl": {
+          "type": "string"
+        }
+      },
+      "required": ["longUrl"]
     }
   }
 }
