@@ -67,5 +67,5 @@ On the terminal, run the command to start testing
 
 
 ```bash
-npm run test
+npm test
 ```

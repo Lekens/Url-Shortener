@@ -25,7 +25,7 @@ if (dotenv.error) {
      * Connection begins
      */
     const dbName = process.env.NODE_ENV === 'development' ? process.env.DB_NAME_DEV : process.env.DB_NAME_PROD;
-    const connectionString = process.env.CONNECTION_STRING;
+    const connectionString = process.env.NODE_ENV !== 'test' ? process.env.CONNECTION_STRING : process.env.CONNECTION_STRING_TEST;
     mongoose.connect(connectionString,() => {});
     const db = mongoose.connection;
     db.on('error', console.error.bind(console, 'Connection error, unable to connect to database!'));
