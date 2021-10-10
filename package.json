@@ -1,0 +1,36 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "A service that helps encode a url to a shortened version.",
+  "main": "index.ts",
+  "scripts": {
+    "test": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lekens/Url-Shortener.git"
+  },
+  "keywords": [
+    "URL-Shortener",
+    "Indicina",
+    "Node",
+    "Typescript"
+  ],
+  "author": "Olalekan Arokoyu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lekens/Url-Shortener/issues"
+  },
+  "homepage": "https://github.com/Lekens/Url-Shortener#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^6.0.10",
+    "nanoid": "^3.1.29",
+    "shortid": "^2.2.16",
+    "typescript": "^3.2.4",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  }
+}
