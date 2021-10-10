@@ -109,7 +109,7 @@ export const shortenerController = {
                   'Provide URL to decode!'
               );
           }
-          URLs.findOne({$or: [{ shortUrl }, { urlCode: shortUrl }]}, (error, url) => {
+          URLs.findOne({$or: [{ shortUrl }, { urlCode: shortUrl }]}, 'longUrl', (error, url) => {
               if(error) {
                   responseHandler.sendError(
                       res,
