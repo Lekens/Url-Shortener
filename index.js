@@ -3,15 +3,14 @@ import * as dot from 'dotenv';
 import { logger, Winston } from "./config/winston.js";
 import morgan from 'morgan';
 import mongoose from 'mongoose';
+import { readFile } from 'fs/promises';
 
 import * as swaggerUi from 'swagger-ui-express';
 import router from './routes/index.js';
 import URLRouter from './routes/URLRouter.js';
 
-import { readFile } from 'fs/promises';
 const swaggerDocument = JSON.parse(await readFile(new URL('./swagger.json', import.meta.url)));
 
-// import swaggerDocument from './swagger.json';
 // {request.connection.remoteAddress}
 const dotenv = dot.config();
 
@@ -38,7 +37,6 @@ if (dotenv.error) {
 // Connection ends here.
 
 }
-
 
 // set up environment
 app.use(morgan('dev'));

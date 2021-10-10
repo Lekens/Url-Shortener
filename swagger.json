@@ -28,7 +28,7 @@
   ],
   "paths": {
     "/list": {
-      "post": {
+      "get": {
         "tags": [
           "ManageURL"
         ],
