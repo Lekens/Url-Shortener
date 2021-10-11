@@ -5,7 +5,7 @@ import winston from "winston";
 const options = {
     file: {
         level: process.env.NODE_ENV === "development" ? "debug" : "info",
-        filename: `${appRoot.path}/logs/${process.env.NODE_ENV}.log`,
+        filename: `/logs/development.log`,
         handleExceptions: true,
         json: true,
         maxsize: 1024000000, // 1GB
