@@ -6,7 +6,7 @@ export const controllerService = {
           if(req.headers && req.headers.authorization) {
             const apiKey = req.headers.authorization;
             if(!apiKey || apiKey !== process.env.APIKEY) {
-                responseHandler.sendError(
+                return responseHandler.sendError(
                   res, 401, 'FAILURE', 'Authorization error: Invalid API-KEY',
                 );
             } else {
@@ -34,7 +34,7 @@ export const controllerService = {
             urlCode: code,
             urlId,
             visitorIP: req.socket.remoteAddress,
-        }, (err) => {
+        }, () => {
             return true;
         });
     }

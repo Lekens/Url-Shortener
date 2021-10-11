@@ -8,7 +8,7 @@ export const responseHandler = {
         errorResponse.code = code;
         errorResponse.msg = message;
         error ? err.ERROR = error : null;
-        return res.status(code).send(errorResponse);
+        return res.status(code).json(errorResponse);
         },
     sendSuccess: (res, code, message, data) => {
         successResponse.data = data;
