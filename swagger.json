@@ -1,0 +1,202 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "URL-SHORTENER",
+    "description": "Documentation for URL-SHORTENER service",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "heroku-link",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "ManageURL",
+      "description": "Manage all possible API calls"
+    }
+  ],
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/list": {
+      "post": {
+        "tags": [
+          "ManageURL"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "API_KEY",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "summary": "List all urls that have been shortened",
+        "description": "List all urls",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "URLs listed successfully"
+          },
+          "400": {
+            "description": "Unable to list URLs"
+          }
+        }
+      }
+
+    },
+    "/encode": {
+      "post": {
+        "tags": [
+          "ManageURL"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "API_KEY",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Object of long url",
+            "schema": {
+              "$ref": "#/definitions/dataToDecodeOrEncode"
+            }
+          }
+        ],
+        "description": "Encode given url",
+        "summary": "Takes a string of URL and encode to generate a short URL",
+        "responses": {
+          "200": {
+            "description": "URL encoded successfully"
+          },
+          "400": {
+            "description": "Unable to encode URL"
+          }
+        }
+      }
+    },
+    "/decode": {
+      "post": {
+        "tags": [
+          "ManageURL"
+        ],
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "description": "API_KEY",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "description": "Object of short url",
+            "schema": {
+              "$ref": "#/definitions/dataToDecodeOrEncode"
+            }
+          }
+        ],
+        "summary": "Receive a short url and return the equivalent long url",
+        "description": "Return the equivalent shorten url for a url string",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "User authenticated successfully"
+          },
+          "400": {
+            "description": "Error while authenticating"
+          }
+        }
+      }
+
+    },
+    "/satistic/{url}": {
+      "get": {
+        "tags": [
+          "ManageURL"
+        ],
+        "summary": "Show the statistic of a given url",
+        "description": "Register new user",
+        "parameters": [
+          {
+            "name": "user",
+            "in": "body",
+            "required": true,
+            "description": "Registration data",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }, {
+            "name": "url",
+            "in": "path",
+            "required": true,
+            "description": "Url code to show statistic",
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "URL statistic fetched successfully"
+          },
+          "400": {
+            "description": "Unable to fetch URL statistics."
+          }
+        }
+      }
+
+    }
+  },
+  "definitions": {
+    "ErrorMessage": {
+      "properties": {
+        "error": {
+          "type": "object"
+        },
+        "status": {
+          "type": "string",
+          "default": "FAILURE"
+        },
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+
+    "dataToDecodeOrEncode": {
+      "properties": {
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": ["url"]
+    },
+    "Users": {
+      "type": "array",
+      "$ref": "#/definitions/User"
+    }
+  }
+}
